@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+
+{% block body %}
+  <h2>Home</h2>
+  <p>
+    Welcome to this <i>glorious</i>, sample application which shows you
+    everything you need to know to build a simple and <i>secure</i> Flask
+    application using <a href="https://stormpath.com" title="Stormpath">Stormpath</a>.
+  </p>
+  <p>Want to <a href="{{ url_for('login') }}">login</a> to your account?</p>
+{% endblock %}

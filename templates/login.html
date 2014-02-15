@@ -1,0 +1,17 @@
+<html>
+  <head>
+    <title>flask-login-sample | login</title>
+  </head>
+  <body>
+    <h1>flask-login-sample (login)</h1>
+    <p> log into your account below</p>
+    {% if error %}
+      <p><b>{{ error }}</b></p>
+    {% endif %}
+    <form method="post" action="">
+      Email: <input type="email" name="email" /><br />
+      Password: <input type="password" name="password" /><br />
+      <input type="submit" name="login" />
+    </form>
+  </body>
+</html>
