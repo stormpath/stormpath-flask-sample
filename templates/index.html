@@ -2,11 +2,24 @@
 
 
 {% block body %}
-  <h2>Home</h2>
-  <p>
-    Welcome to this <i>glorious</i>, sample application which shows you
-    everything you need to know to build a simple and <i>secure</i> Flask
-    application using <a href="https://stormpath.com" title="Stormpath">Stormpath</a>.
-  </p>
-  <p>Want to <a href="{{ url_for('login') }}">login</a> to your account?</p>
+  <div class="jumbotron" id="welcome">
+    <h1>Welcome to Flask-Stormpath!</h1>
+    <p class="lead">
+      <br />
+      <br />
+      Welcome to this <i>gloriously simple</i> Flask-Stormpath sample
+      application! First, take a look through the very basic site -- then, check
+      out this project's source code
+      <a href="https://github.com/rdegges/blah">on GitHub</a>, and get your own
+      site(s) using Flask-Stormpath in no time at all!
+      <br />
+      <br />
+      This simple application demonstrates how easy it is to register, login,
+      and securely authenticate users on your website using Flask-Stormpath.
+      <br />
+      <br />
+      Aren't a Stormpath user yet? <a href="https://stormpath.com">Go signup now!</a>
+    </p>
+    <p class="bigbutton"><a class="bigbutton btn btn-lg btn-danger" href="{{ url_for('login') }}" role="button">Register</a></p>
+  </div>
 {% endblock %}
