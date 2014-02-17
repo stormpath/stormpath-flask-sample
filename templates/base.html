@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Flask-Stormpath (sample) | {% block title %}{% endblock %}</title>
     <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -14,8 +15,16 @@
     <![endif]-->
   </head>
   <body>
-    <h1>Flask-Stormpath (sample)</h1>
-    {% block body %}{% endblock %}
+    <div class="container">
+      <div class="header">
+        <ul class="nav nav-pills pull-right">
+          <li class="active"><a href="{{ url_for('index') }}">Home</a></li>
+          <li><a href="{{ url_for('login') }}">Login</a></li>
+        </ul>
+        <h3 class="text-muted">Flask-Stormpath</h3>
+      </div>
+      {% block body %}{% endblock %}
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
   </body>
