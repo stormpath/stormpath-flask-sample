@@ -1,17 +1,46 @@
-<html>
-  <head>
-    <title>flask-login-sample | login</title>
-  </head>
-  <body>
-    <h1>flask-login-sample (login)</h1>
-    <p> log into your account below</p>
-    {% if error %}
-      <p><b>{{ error }}</b></p>
-    {% endif %}
-    <form method="post" action="">
-      Email: <input type="email" name="email" /><br />
-      Password: <input type="password" name="password" /><br />
-      <input type="submit" name="login" />
-    </form>
-  </body>
-</html>
+{% extends "base.html" %}
+
+
+{% block body %}
+  <div class="login">
+    <div class="row">
+      <div class="col-lg-6 col-lg-offset-3">
+        <form class="bs-example form-horizontal" method="post" action="">
+          <fieldset>
+            <legend>Login</legend>
+            {% if error %}
+              <div class="alert alert-dismissable alert-danger login-fail">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                {{ error }}
+              </div>
+            {% endif %}
+            <p class="last-p">
+              Once you enter your credentials and hit the Login button below,
+              your credentials will be securely sent to
+              <a href="https://stormpath.com">Stormpath</a> and verified.  If
+              your credentials are valid, you'll be logged in using a secure
+              session -- otherwise, you'll get a user friendly error message.
+            </p>
+            <div class="form-group">
+              <label for="email" class="col-lg-4 control-label">Email</label>
+              <div class="col-lg-4">
+                <input type="email" class="form-control" id="email" name="email" placeholder="Email" autofocus>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="password" class="col-lg-4 control-label">Password</label>
+              <div class="col-lg-4">
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-lg-10 col-lg-offset-4">
+                <button type="submit" class="btn btn-primary">Login</button>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

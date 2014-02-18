@@ -2,12 +2,16 @@
   margin-top: 6em;
 }
 
-.register {
+.register, .login {
   margin-top: 6em;
 }
 
-.register-fail {
+.register-fail, .login-fail {
   margin-bottom: 1em;
+}
+
+.login .last-p {
+  margin-bottom: 2em;
 }
 
 .jumbotron h1 {
