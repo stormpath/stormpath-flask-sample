@@ -32,6 +32,7 @@ from flask.ext.stormpath import (
     login_required,
     login_user,
     logout_user,
+    user,
 )
 
 from stormpath.error import Error as StormpathError
@@ -109,7 +110,7 @@ def login():
     return redirect(request.args.get('next') or url_for('dashboard'))
 
 
-@app.route('/dashboard')
+@app.route('/dashboard', methods=['GET', 'POST'])
 @login_required
 def dashboard():
     """
@@ -117,9 +118,16 @@ def dashboard():
 
     Users can see their personal information on this page, as well as store
     additional data to their account (if they so choose).
-
-    TODO: Let a user change their account data.
     """
+    if request.method == 'POST':
+        if request.form.get('birthday'):
+            user.custom_data['birthday'] = request.form.get('birthday')
+
+        if request.form.get('color'):
+            user.custom_data['color'] = request.form.get('color')
+
+        user.save()
+
     return render_template('dashboard.html')
 
 
