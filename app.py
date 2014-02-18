@@ -55,6 +55,34 @@ def index():
     return render_template('index.html')
 
 
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    """
+    This view allows a user to register for the site.
+
+    This will create a new User in Stormpath, and then log the user into their
+    new account immediately (no email verification required).
+    """
+    if request.method == 'GET':
+        return render_template('register.html')
+
+    try:
+        # Create a new Stormpath User.
+        _user = stormpath_manager.application.accounts.create({
+            'email': request.form.get('email'),
+            'password': request.form.get('password'),
+            'given_name': 'John',
+            'surname': 'Doe',
+        })
+        _user.__class__ = User
+    except StormpathError, err:
+        # If something fails, we'll display a user-friendly error message.
+        return render_template('register.html', error=err.message)
+
+    login_user(_user, remember=True)
+    return redirect(url_for('dashboard'))
+
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     """
