@@ -102,8 +102,8 @@ def login():
             request.form.get('email'),
             request.form.get('password'),
         )
-    except StormpathError:
-        return render_template('login.html', error='Invalid credentials.')
+    except StormpathError, err:
+        return render_template('login.html', error=err.message)
 
     login_user(_user, remember=True)
     return redirect(request.args.get('next') or url_for('dashboard'))
