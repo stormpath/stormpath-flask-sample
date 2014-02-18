@@ -18,8 +18,13 @@
     <div class="container">
       <div class="header">
         <ul class="nav nav-pills pull-right">
-          <li class="active"><a href="{{ url_for('index') }}">Home</a></li>
-          <li><a href="{{ url_for('login') }}">Login</a></li>
+          <li {% if 'index' in request.endpoint %}class="active"{% endif %}><a href="{{ url_for('index') }}">Home</a></li>
+          {% if user.is_authenticated() %}
+            <li {% if 'dashboard' in request.endpoint %}class="active"{% endif %}><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+            <li><a href="{{ url_for('logout') }}">Logout</a></li>
+          {% else %}
+            <li {% if 'login' in request.endpoint %}class="active"{% endif %}><a href="{{ url_for('login') }}">Login</a></li>
+          {% endif %}
         </ul>
         <h3 class="text-muted">Flask-Stormpath</h3>
       </div>
