@@ -2,6 +2,10 @@
   margin-top: 6em;
 }
 
+#welcome li {
+  font-size: 1.5em;
+}
+
 .register, .login, .dashboard {
   margin-top: 6em;
 }
