@@ -2,6 +2,14 @@
   margin-top: 6em;
 }
 
+.register {
+  margin-top: 6em;
+}
+
+.register-fail {
+  margin-bottom: 1em;
+}
+
 .jumbotron h1 {
   text-align: center;
 }
