@@ -2,7 +2,7 @@
   margin-top: 6em;
 }
 
-.register, .login {
+.register, .login, .dashboard {
   margin-top: 6em;
 }
 
@@ -12,6 +12,15 @@
 
 .login .last-p {
   margin-bottom: 2em;
+}
+
+.dashboard h2 {
+  font-weight: bold;
+}
+
+.dashboard .data {
+  color: #DF691A;
+  font-weight: bold;
 }
 
 .jumbotron h1 {
