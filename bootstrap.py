@@ -54,9 +54,9 @@ except:
     pass
 
 env_file = open('.env', 'wb')
-env_file.write('export STORMPATH_API_KEY_ID=%s' % id)
-env_file.write('export STORMPATH_API_KEY_SECRET=%s' % secret)
-env_file.write('export STORMPATH_APPLICATION=flask-stormpath-sample')
+env_file.write('export STORMPATH_API_KEY_ID=%s\n' % id)
+env_file.write('export STORMPATH_API_KEY_SECRET=%s\n' % secret)
+env_file.write('export STORMPATH_APPLICATION=flask-stormpath-sample\n')
 env_file.close()
 
 print """I've just created a new file in this directory named .env
