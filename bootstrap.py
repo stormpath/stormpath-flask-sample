@@ -44,7 +44,7 @@ try:
     client.applications.create({
         'name': 'flask-stormpath-sample',
         'description': 'A sample application required to run the flask-stormpath-sample application.  Feel free to delete this!',
-    })
+    }, create_directory=True)
     print """\n
 I've just created a new Stormpath application in your account named:
 flask-stormpath-sample, when you're done using this sample application, feel
