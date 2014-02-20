@@ -5,6 +5,38 @@ A sample Flask application which demonstrates how to successfully use
 users for your web app.
 
 
+## Getting Started
+
+To get started, you'll want to first clone this GitHub repository locally:
+
+```bash
+$ git clone https://github.com/stormpath/stormpath-flask-sample.git
+```
+
+Next, you'll want to go into the sample app directory:
+
+```bash
+$ cd stormpath-flask-sample
+```
+
+Then you'll want to install all of the Python requirements (via
+[pip](http://pip.readthedocs.org/en/latest/)):
+
+```bash
+$ pip install -r requirements.txt
+```
+
+And lastly, you'll want to run the `bootstrap.py` script which will guide you
+the rest of the way:
+
+```bash
+$ python bootstrap.py
+```
+
+That's it!  Get suck?  Just email us anytime:
+[support@stormpath.com](mailto:support@stormpath.com)
+
+
 ## Screenshots
 
 Here are some various screenshots of the application (and bootstrap script!), so
