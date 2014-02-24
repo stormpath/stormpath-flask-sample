@@ -46,6 +46,11 @@
         </form>
         <h2>A Note About Stormpath Security</h2>
         <p>
+          In a real environment, you should <b>only deploy your application</b>
+          behind SSL / TLS to avoid having user credentials sent in plain text
+          over the network.
+        </p>
+        <p>
           Stormpath user creation is incredibly secure, is not susceptible to any
           known vulnerabilities (MITM, hashing issues, replay attacks, etc.), and
           provides you with a number of options to improve security (including
