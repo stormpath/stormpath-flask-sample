@@ -33,7 +33,7 @@ the rest of the way:
 $ python bootstrap.py
 ```
 
-That's it!  Get suck?  Just email us anytime:
+That's it!  Got stuck?  Just email us anytime:
 [support@stormpath.com](mailto:support@stormpath.com)
 
 
