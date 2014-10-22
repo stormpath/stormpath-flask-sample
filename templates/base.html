@@ -30,6 +30,17 @@
       </div>
       {% block body %}{% endblock %}
     </div>
+    <footer>
+      <p>
+        <img class="lock" src="{{ url_for('static', filename='img/lock.png') }}"/>
+        &nbsp;
+        <span>Secured By</span>
+        &nbsp;
+        <img src="{{ url_for('static', filename='img/stormpath.png') }}"/>
+      </p>
+    </footer>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
   </body>
