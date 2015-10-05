@@ -39,19 +39,23 @@ while not secret:
     secret = raw_input('Please enter your Stormpath API Key Secret: ')
 
 
+done = False
 client = Client(id=id, secret=secret)
-try:
-    client.applications.create({
-        'name': 'flask-stormpath-sample',
-        'description': 'A sample application required to run the flask-stormpath-sample application.  Feel free to delete this!',
-    }, create_directory=True)
-    print """\n
-I've just created a new Stormpath application in your account named:
-flask-stormpath-sample, when you're done using this sample application, feel
-free to delete this!
-"""
-except:
-    pass
+
+while not done:
+    try:
+        client.applications.create({
+            'name': 'flask-stormpath-sample',
+            'description': 'A sample application required to run the flask-stormpath-sample application.  Feel free to delete this!',
+        }, create_directory=True)
+        done = True
+        print """\n
+    I've just created a new Stormpath application in your account named:
+    flask-stormpath-sample, when you're done using this sample application, feel
+    free to delete this!
+    """
+    except Exception, err:
+        print 'ERROR! Failed to create Stormpath Application:', err
 
 env_file = open('.env', 'wb')
 env_file.write('export STORMPATH_API_KEY_ID=%s\n' % id)
