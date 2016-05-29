@@ -7,6 +7,7 @@
 
     - It will collect your Stormpath credentials from you (via the command
       line).
+
     - It will get or create a new Stormpath Application in your account named
       (so that we can run this project).
 
@@ -48,7 +49,7 @@ def create_app(client):
         print('ERROR! Failed to create Stormpath Application: {}'.format(err))
 
 
-print """
+print("""
 Hi, and welcome to the flask-stormpath-sample bootstrap app!
 
 I'll help get you up and running in no time!  If you don't already have a
@@ -56,7 +57,7 @@ Stormpath account, please create one: https://api.stormpath.com/register
 
 Once you've made an account, be sure to create an API keypair in your
 dashboard, and download your credentials.  You'll need these to continue.
-"""
+""")
 
 id = None
 while not id:
@@ -72,12 +73,12 @@ if not app:
     app = create_app(client)
 
 env_file = open('.env', 'wb')
-env_file.write('export STORMPATH_API_KEY_ID=%s\n' % id)
-env_file.write('export STORMPATH_API_KEY_SECRET=%s\n' % secret)
+env_file.write('export STORMPATH_API_KEY_ID={}\n'.format(id))
+env_file.write('export STORMPATH_API_KEY_SECRET={}\n'.format(secret))
 env_file.write('export STORMPATH_APPLICATION={}\n'.format(app.name))
 env_file.close()
 
-print """I've just created a new file in this directory named .env
+print("""I've just created a new file in this directory named .env
 
 This file contains all of the necessary environment variables to make this
 sample application run!
@@ -92,4 +93,4 @@ You should then be able to visit 'http://localhost:5000' in your browser to
 play around with the sample application!
 
 Have questions?  Email us!  support@stormpath.com
-"""
+""")
