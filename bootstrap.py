@@ -7,8 +7,8 @@
 
     - It will collect your Stormpath credentials from you (via the command
       line).
-    - It will create a new Stormpath Application in your account named
-      'flask-stormpath-sample' (so that we can run this project).
+    - It will get or create a new Stormpath Application in your account named
+      (so that we can run this project).
 
     - It will create a `.env` file in this directory which holds 3 environment
       variables needed for this sample application to run successfully.
@@ -18,6 +18,34 @@
 
 
 from stormpath.client import Client
+
+
+def get_app(client):
+    """Return an existing Stormpath Application if a default one exists."""
+    total_apps = len(client.applications)
+    if total_apps == 2:
+        for app in client.applications:
+            if app.name != 'Stormpath':
+                return app
+
+    apps = client.applications.search({'name': 'flask-stormpath-sample'})
+    return apps[0] if len(apps) == 1 else None
+
+
+def create_app(client):
+    """Create a new Stormpath Application for this project."""
+    try:
+        app = client.applications.create({
+            'name': 'flask-stormpath-sample',
+            'description': 'A sample application required to run the flask-stormpath-sample application.  Feel free to delete this!',
+        }, create_directory=True)
+        print("""\n
+    I've just created a new Stormpath application in your account named:
+    flask-stormpath-sample, when you're done using this sample application, feel
+    free to delete it!""")
+        return app
+    except Exception as err:
+        print('ERROR! Failed to create Stormpath Application: {}'.format(err))
 
 
 print """
@@ -38,29 +66,15 @@ secret = None
 while not secret:
     secret = raw_input('Please enter your Stormpath API Key Secret: ')
 
-
-done = False
 client = Client(id=id, secret=secret)
-
-while not done:
-    try:
-        client.applications.create({
-            'name': 'flask-stormpath-sample',
-            'description': 'A sample application required to run the flask-stormpath-sample application.  Feel free to delete this!',
-        }, create_directory=True)
-        done = True
-        print """\n
-    I've just created a new Stormpath application in your account named:
-    flask-stormpath-sample, when you're done using this sample application, feel
-    free to delete this!
-    """
-    except Exception, err:
-        print 'ERROR! Failed to create Stormpath Application:', err
+app = get_app(client)
+if not app:
+    app = create_app(client)
 
 env_file = open('.env', 'wb')
 env_file.write('export STORMPATH_API_KEY_ID=%s\n' % id)
 env_file.write('export STORMPATH_API_KEY_SECRET=%s\n' % secret)
-env_file.write('export STORMPATH_APPLICATION=flask-stormpath-sample\n')
+env_file.write('export STORMPATH_APPLICATION={}\n'.format(app.name))
 env_file.close()
 
 print """I've just created a new file in this directory named .env
