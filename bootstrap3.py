@@ -41,9 +41,9 @@ def create_app(client):
             'description': 'A sample application required to run the flask-stormpath-sample application.  Feel free to delete this!',
         }, create_directory=True)
         print("""\n
-    I've just created a new Stormpath application in your account named:
-    flask-stormpath-sample, when you're done using this sample application, feel
-    free to delete it!""")
+I've just created a new Stormpath application in your account named:
+flask-stormpath-sample, when you're done using this sample application, feel
+free to delete it!""")
         return app
     except Exception as err:
         print('ERROR! Failed to create Stormpath Application: {}'.format(err))
