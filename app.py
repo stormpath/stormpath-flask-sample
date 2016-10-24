@@ -18,23 +18,8 @@
 
 from os import environ
 
-from flask import (
-    Flask,
-    redirect,
-    render_template,
-    request,
-    url_for,
-)
-
-from flask.ext.stormpath import (
-    StormpathManager,
-    User,
-    login_required,
-    login_user,
-    logout_user,
-    user,
-)
-
+from flask import Flask, redirect, render_template, request, url_for
+from flask.ext.stormpath import StormpathManager, User, login_required, login_user, logout_user, user
 from stormpath.error import Error as StormpathError
 
 
@@ -76,7 +61,7 @@ def register():
             'surname': 'Doe',
         })
         _user.__class__ = User
-    except StormpathError, err:
+    except StormpathError as err:
         # If something fails, we'll display a user-friendly error message.
         return render_template('register.html', error=err.message, email=request.form.get('email'))
 
@@ -103,7 +88,7 @@ def login():
             request.form.get('email'),
             request.form.get('password'),
         )
-    except StormpathError, err:
+    except StormpathError as err:
         return render_template('login.html', error=err.message, email=request.form.get('email'))
 
     login_user(_user, remember=True)
